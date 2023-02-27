@@ -4,17 +4,56 @@ import './App.css';
 import Navbar from './components/Navbar'
 import Card from './components/Card'
 
-import pizza from './images/pizza.jpg'
+import savoryPie from './images/savory pie.jpg'
 import cheescake from './images/cheescake.jpg'
 import cutlet from './images/cutlet.jpg'
 import ravioli from './images/ravioli.jpg'
 import orecchiette from './images/orecchiette.jpg'
-import spoonDessert from './images/spoonDessert.jpg'
+import spoonDessert from './images/spoon dessert.jpg'
 
 
-
+// Perchè è meglio usare i class component anzichè i functional component se voglio usare le props ?
 class App extends Component {
-
+  state = {
+    cards: [
+      {
+        id: 0,
+        name: 'Savory pie',
+        price: 6.00,
+        image: savoryPie
+      }, 
+      {
+        id: 1,
+        name: 'Strawberry cheesecake',
+        price: 5.00,
+        image: cheescake
+      },
+      {
+        id: 2,
+        name: 'Cutlet',
+        price: 7.00,
+        image: cutlet
+      },
+      {
+        id: 3,
+        name: 'Ravioli with butter and sage',
+        price: 10.00,
+        image: ravioli
+      },
+      {
+        id: 4,
+        name: 'Orecchiette with turnip tops',
+        price: 8.00,
+        image: orecchiette
+      },
+      {
+        id: 5,
+        name: 'Spoon dessert',
+        price: 5.00,
+        image: spoonDessert
+      }
+    ]
+  }
   render() {
     return (
 
@@ -24,17 +63,11 @@ class App extends Component {
           <h3>What would you like to order ?</h3>
           <hr />
           <div className='row'>
-            <Card image={pizza} name= 'Savory pie' price= '6,00' />
-            <Card image={cheescake} name= 'Strawberry cheesecake' price= '5,00'/>
-            <Card image={cutlet} name= 'Cutlet' price= '6,00'/>
-            <Card image={ravioli} name= 'Ravioli with butter and sage' price= '10,00'/>
-            <Card image={orecchiette} name= 'Orecchiette with turnip tops' price= '8,00'/>
-            <Card image={spoonDessert} name= 'Spoon dessert' price= '5,00'/>
+            {this.state.cards.map(card => (
+              <Card key={card.id} image={card.image} name={card.name} price={card.price}/>
+            ))}
           </div>
-          {/* <div className='row'>
-            <
   
-          </div> */}
         </div>
   
       </>
