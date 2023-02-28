@@ -20,37 +20,43 @@ class App extends Component {
         id: 0,
         name: 'Savory pie',
         price: '6,00',
-        image: savoryPie
+        image: savoryPie,
+        quantity: 0
       }, 
       {
         id: 1,
         name: 'Strawberry cheesecake',
         price: '5,50',
-        image: cheescake
+        image: cheescake,
+        quantity: 0
       },
       {
         id: 2,
         name: 'Cutlet',
         price: '7,00',
-        image: cutlet
+        image: cutlet,
+        quantity: 0
       },
       {
         id: 3,
         name: 'Ravioli with butter and sage',
         price: '10,00',
-        image: ravioli
+        image: ravioli,
+        quantity: 0
       },
       {
         id: 4,
         name: 'Orecchiette with turnip tops',
         price: '8,00',
-        image: orecchiette
+        image: orecchiette,
+        quantity: 0
       },
       {
         id: 5,
         name: 'Spoon dessert',
         price: '5,00',
-        image: spoonDessert
+        image: spoonDessert,
+        quantity: 0
       }
     ]
   }
@@ -81,14 +87,16 @@ class App extends Component {
     }));
   }
 
-
-
-
-
+  handleIncrement = card => {
+    const cards = [...this.state.cards]
+    const id = cards.indexOf(card)
+    // cards[id] = {...card}
+    cards[id].quantity ++
+    this.setState({cards})
+  }
 
   render() {
     return (
-
       <>
         <Navbar />
         <div className='container mb-3 mt-5'>
@@ -96,17 +104,13 @@ class App extends Component {
           <hr />
           <div className='row'>
             {this.state.cards.map(card => (
-              <Card key={card.id} card={card} onDelete={this.handleDelete} />
+              <Card key={card.id} card={card} onDelete={this.handleDelete} onIncrement= {this.handleIncrement}/>
             ))}
           </div>
-  
         </div>
-  
       </>
-  
     );
   }
-  
 }
 
 export default App;
