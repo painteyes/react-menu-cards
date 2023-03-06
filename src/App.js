@@ -12,7 +12,6 @@ import orecchiette from './images/orecchiette.jpg'
 import spoonDessert from './images/spoon dessert.jpg'
 
 
-// Perchè è meglio usare i class component anzichè i functional component se voglio usare le props ?
 class App extends Component {
   state = {
     cards: [
